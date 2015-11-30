@@ -15,7 +15,9 @@ def lock(filename):
             open(filename, 'w').close()
         f = open(filename, 'r+')
         fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except BlockingIOError:
+    except IOError as ex:
+        if ex.errno != 11:
+            raise
         return None
     lock._files[filename] = f
     return f
