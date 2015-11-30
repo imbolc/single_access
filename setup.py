@@ -16,7 +16,7 @@ if sys.argv[-1] == 'publish':
 
 setup(
     name='single_access',
-    version='0.0.4',
+    version='0.0.5',
 
     description='Single access to run a python script',
     long_description=read('README.rst'),
